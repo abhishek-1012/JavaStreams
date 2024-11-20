@@ -95,6 +95,43 @@ catch (IllegalStateException e){
                 .reduce((a,b)->a+b);
         System.out.println(SumWithOutInitialiser.get());
 
+        //Finding the maximum element in a array using streams
+        Optional<Integer>max=nums.stream()
+                .reduce((a,b)->Math.max(a,b));
+        System.out.print("Maximum number is : " );
+        System.out.println(max.get());
+
+        //Finding the minimum element in a array using streams
+        Optional<Integer>min=nums.stream()
+                .reduce((a,b)->Math.min(a,b));
+        System.out.print("Minimum number is : " );
+        System.out.println(min.get());
+
+        //Counting the number of dishes in a stream
+        int count=0;
+        int SumOfDishes=menu.stream()
+                .map(n->1)
+                .reduce(0,(a,b)->a+b);
+        System.out.println(SumOfDishes);
+
+ //We can also the in-built method of stream to cout the elements
+        System.out.println(menu.stream().count());
+
+        //Calculating the calories in a menu
+        int SumOfCalories=menu.stream()
+                .map(dish ->dish.getCalories())
+                .reduce(0,(disha,dishb)->disha+dishb);
+        System.out.println(SumOfCalories);
+
+        //Sorting the dishes of menu by their name
+        List<String>NamesOfDishes=menu.stream()
+                .map(dishh->dishh.getName())
+                .sorted()
+                .collect(Collectors.toUnmodifiableList());
+        System.out.println(NamesOfDishes);
+
+
+
 
     }
 }
